@@ -5,11 +5,12 @@ import os
 import sys
 import sqlite3
 import getpass
+import re
 from playwright.async_api import async_playwright
 from bs4 import BeautifulSoup
 import asyncio
 
-async def scrape_google_maps(search_query: str, max_results: int = 10):
+async def scrape_google_maps(search_query: str, max_results: int = 10, reviews_count: int = 0):
     """
     Scrapes Google Maps for a given search query and returns a list of places.
     """
@@ -54,7 +55,10 @@ async def scrape_google_maps(search_query: str, max_results: int = 10):
                     break
                 tasks.append(scrape_place(browser, link, i + 1, len(unique_links)))
 
-            places = await asyncio.gather(*tasks)
+            scraped_places = await asyncio.gather(*tasks)
+
+            # Filter out empty results and places with fewer reviews than specified
+            places = [p for p in scraped_places if p and p.get('reviews_count', 0) >= reviews_count]
 
         except Exception as e:
             print(f"An error occurred: {e}")
@@ -81,12 +85,24 @@ async def scrape_place(browser, link, index, total):
         name_element = details_soup.find('h1')
         place_data['name'] = name_element.text.strip() if name_element else 'N/A'
 
-        # Extract Rating
+        # Extract Rating and Reviews Count
         try:
-            rating_text = details_soup.select_one('div.F7nice span[aria-hidden="true"]').text
-            place_data['rating'] = float(rating_text)
+            rating_text = details_soup.select_one('div.F7nice').text
+            rating_match = re.search(r'([\d\.]+)', rating_text)
+            reviews_match = re.search(r'\(([\d,]+)\)', rating_text)
+            
+            if rating_match:
+                place_data['rating'] = float(rating_match.group(1))
+            else:
+                place_data['rating'] = 'N/A'
+            
+            if reviews_match:
+                place_data['reviews_count'] = int(reviews_match.group(1).replace(',', ''))
+            else:
+                place_data['reviews_count'] = 0
         except (AttributeError, ValueError):
             place_data['rating'] = 'N/A'
+            place_data['reviews_count'] = 0
 
         # Extract other details using data-item-id
         address_element = details_soup.find(attrs={'data-item-id': 'address'})

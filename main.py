@@ -25,15 +25,16 @@ async def verify_rapidapi_secret(request: Request, call_next):
     return response
 
 @app.get("/search")
-async def search_places(q: str, max_results: int = 10):
+async def search_places(q: str, max_results: int = 10, reviews_count: int = 0):
     """
     Searches for places on Google Maps.
 
     - **q**: The search query (e.g., "ramen in san francisco").
     - **max_results**: The maximum number of results to return.
+    - **reviews_count**: The minimum number of reviews for a place to be included in the results.
     """
     if not q:
         return {"error": "Search query 'q' is required."}
     
-    results = await scrape_google_maps(q, max_results)
+    results = await scrape_google_maps(q, max_results, reviews_count)
     return {"query": q, "results": results}
