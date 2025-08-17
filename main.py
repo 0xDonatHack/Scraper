@@ -11,7 +11,7 @@ app = FastAPI(
 # Get the RapidAPI proxy secret from environment variables
 RAPIDAPI_PROXY_SECRET = os.environ.get("RAPIDAPI_PROXY_SECRET")
 
-@app.middleware("http")
+#@app.middleware("http")
 async def verify_rapidapi_secret(request: Request, call_next):
     # If the RAPIDAPI_PROXY_SECRET is not set, we can assume it's a development environment
     # and skip the verification. In a production environment, this secret should be set.
