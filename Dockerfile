@@ -16,9 +16,7 @@ COPY . .
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Set a placeholder for the RapidAPI secret.
-# Remember to replace "YOUR_RAPIDAPI_PROXY_SECRET" with your actual secret in your deployment environment.
-ENV RAPIDAPI_PROXY_SECRET="8118a9b0-7a68-11f0-afea-d50f75b56c0d"
+
 
 # Define the command to run the application using Gunicorn for production
 CMD ["gunicorn", "-w", "4", "-k", "uvicorn.workers.UvicornWorker", "main:app", "-b", "0.0.0.0:8000"]
