@@ -1,6 +1,9 @@
 from fastapi import FastAPI, Request, HTTPException
 from scraper import scrape_google_maps
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = FastAPI(
     title="Google Maps Scraper API",
