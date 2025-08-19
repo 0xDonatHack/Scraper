@@ -35,7 +35,6 @@ async def scrape_google_maps(search_query: str, max_results: int = 10, reviews_c
             # Wait for results to load
             await page.wait_for_selector('[role="feed"]', timeout=15000)
             print("Results loaded. Parsing links..")
-            
 
             # Scroll to load more results
             for _ in range(10): # Scroll 5 times
