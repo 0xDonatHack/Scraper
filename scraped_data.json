@@ -1,0 +1,56 @@
+[
+  {
+    "name": "Boucherie West Village",
+    "rating": 4.7,
+    "reviews_count": 6730,
+    "address": "99 7th Ave S, New York, NY 10014, United States",
+    "website": "https://www.boucherieus.com/",
+    "phone_number": "+1 212-837-1616",
+    "email": "N/A"
+  },
+  {
+    "name": "Manhatta",
+    "rating": 4.7,
+    "reviews_count": 3028,
+    "address": "28 Liberty St 60th floor, New York, NY 10005, United States",
+    "website": "https://www.manhattarestaurant.com/?utm_source=GoogleBusinessProfile&utm_medium=Website&utm_campaign=MapLabs",
+    "phone_number": "+1 212-230-5788",
+    "email": "N/A"
+  },
+  {
+    "name": "Piccola Cucina Osteria Siciliana",
+    "rating": 4.6,
+    "reviews_count": 2303,
+    "address": "196 Spring St, New York, NY 10012, United States",
+    "website": "http://www.piccolacucinagroup.com/",
+    "phone_number": "+1 646-478-7488",
+    "email": "N/A"
+  },
+  {
+    "name": "Buvette",
+    "rating": 4.4,
+    "reviews_count": 4030,
+    "address": "42 Grove St, New York, NY 10014, United States",
+    "website": "http://www.ilovebuvette.com/",
+    "phone_number": "+1 212-255-3590",
+    "email": "N/A"
+  },
+  {
+    "name": "Gramercy Tavern",
+    "rating": 4.6,
+    "reviews_count": 4530,
+    "address": "42 E 20th St, New York, NY 10003, United States",
+    "website": "http://www.gramercytavern.com/?utm_source=GoogleBusinessProfile&utm_medium=Website&utm_campaign=MapLabs",
+    "phone_number": "+1 212-477-0777",
+    "email": "N/A"
+  },
+  {
+    "name": "Lindens",
+    "rating": 4.8,
+    "reviews_count": 780,
+    "address": "2 Renwick St, New York, NY 10013, United States",
+    "website": "http://www.lindensnyc.com/",
+    "phone_number": "+1 929-595-7706",
+    "email": "N/A"
+  }
+]
